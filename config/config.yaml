@@ -94,14 +94,14 @@ platforms:
 # max_age_days: 可选，覆盖全局 freshness_filter.max_age_days
 # ===============================================================
 rss:
-  enabled: false                       # 是否启用 RSS 抓取（true=启用, false=关闭）
+  enabled: true                       # 是否启用 RSS 抓取（true=启用, false=关闭）
 
   # 文章新鲜度过滤（过滤超龄旧文章，避免重复推送）
   # 仅在推送阶段过滤，所有文章仍会存入数据库
   freshness_filter:
-    enabled: false                     # 是否启用新鲜度过滤（true=启用, false=关闭）
+    enabled: true                     # 是否启用新鲜度过滤（true=启用, false=关闭）
 
-    max_age_days: 1                   # 最大文章年龄（天）
+    max_age_days: 3                   # 最大文章年龄（天）
                                       # - 正整数：只推送 N 天内的文章
                                       # - 0：禁用过滤，推送所有文章
 
@@ -110,13 +110,20 @@ rss:
   # - 正整数：覆盖全局设置，只推送此天数内的文章
   # - 0：禁用此频道的新鲜度过滤，推送所有文章
   feeds:
-    - id: "hacker-news"
-      name: "Hacker News"
-      url: "https://hnrss.org/frontpage"
-
     - id: "yahoo-finance"
       name: "雅虎财经"
       url: "https://finance.yahoo.com/news/rssindex"
+
+    - id: "shengkenami"
+      name: "胜科纳米"
+      url: "http://dd.320512.xyz:1200/eastmoney/search/胜科纳米"
+
+    - id: "jintl"
+      name: "金螳螂"
+      url: "http://dd.320512.xyz:1200/eastmoney/search/金螳螂"
+
+
+
 
 
     # 自定义源示例
@@ -224,7 +231,7 @@ display:
   # 推送展示由 regions.standalone 控制，AI 分析由 ai_analysis.include_standalone 控制
   standalone:
     platforms: ["zhihu","xueqiu","cls-hot","wallstreetcn-hot","gelonghui"] # 热榜平台 ID 列表（如 ["zhihu", "weibo"]）
-    rss_feeds: []                                # RSS 源 ID 列表（如 ["hacker-news"]）
+    rss_feeds: ["shengkenami","jintl"] # RSS 源 ID 列表（如 ["hacker-news"]）
     max_items: 30                                # 每个源最多展示条数（0=不限制）
 
 
